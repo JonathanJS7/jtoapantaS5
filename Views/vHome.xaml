@@ -16,35 +16,64 @@
         <Grid Padding="5" RowSpacing="1" ColumnSpacing="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="15"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="20"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
+
             <Button x:Name="btnInsertar"
-                    Text="Añadir Persona"
+                    ImageSource="add.png" WidthRequest="130" HeightRequest="80" HorizontalOptions="Center"
                     Clicked="btnInsertar_Clicked"
-                    Grid.Row="0"
-                    Grid.Column="0"/>
-            
-            <Label x:Name="status"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   TextColor="red"/>
-            
-            <Button x:Name="btnListar"
-                    Text="Listar"
-                    Clicked="btnListar_Clicked"
                     Grid.Row="2"
                     Grid.Column="0"/>
 
-            <CollectionView x:Name="ListaPersonas"
-                            Grid.Row="3"
-                            Grid.Column="0">
+
+            <Button x:Name="btnActualizar"
+                    ImageSource="edit.png" WidthRequest="130" HeightRequest="80" HorizontalOptions="Center"
+                    Clicked="btnActualizar_Clicked"
+                    Grid.Row="3"
+                    Grid.Column="0"/>
+
+
+            <Label x:Name="status"
+                   Grid.Row="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalOptions="Center"
+                   TextColor="red"/>
+            
+            <Button x:Name="btnEliminar"
+                    ImageSource="remove.png" WidthRequest="130" HeightRequest="80" HorizontalOptions="Center"
+                    Clicked="btnEliminar_Clicked"
+                    Grid.Row="2"
+                    Grid.Column="1"/>
+
+            <Button x:Name="btnListar"
+                    ImageSource="iconfinder.png" WidthRequest="130" HeightRequest="80" HorizontalOptions="Center"
+                    Clicked="btnListar_Clicked"
+                    Grid.Row="3"
+                    Grid.Column="1"/>
+            
+
+            <Label Text="Lista de Personas"
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="Center"
+                    Grid.Row="5"/>
+
+            <CollectionView x:Name="ListaPersonas"            
+                    Grid.Row="6"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="Center"
+                    SelectionMode="Single"
+                    SelectionChanged="ListaPersonas_SelectionChanged">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                     <Grid>

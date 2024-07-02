@@ -68,6 +68,43 @@ namespace jtoapantaS5.Utils
             }
             return new List<Persona>();
         }
+
+        public void UpdatePerson(int id, string nombre)
+        {
+            try
+            {
+                init();
+                var person = conn.Table<Persona>().FirstOrDefault(p => p.Id == id);
+                if (person == null)
+                    throw new Exception("Persona no encontrada");
+
+                person.Nombre = nombre;
+                int result = conn.Update(person);
+                StatusMessage = string.Format("Persona actualizada correctamente", result, nombre);
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Error al actualizar: {0}", ex.Message);
+            }
+        }
+
+        public void DeletePerson(int id)
+        {
+            try
+            {
+                init();
+                var person = conn.Table<Persona>().FirstOrDefault(p => p.Id == id);
+                if (person == null)
+                    throw new Exception("Persona no encontrada");
+
+                int result = conn.Delete(person);
+                StatusMessage = string.Format("Persona eliminada correctamente", result, id);
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Error al eliminar: {0}", ex.Message);
+            }
+        }
     }
 }
 
